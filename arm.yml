@@ -12,3 +12,4 @@ stages:
         displayName: Deploy ${{ parameters.environment }}
         steps:
           - script: echo ${{ parameters.business_unit }}
+            displayName: show BU
