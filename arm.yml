@@ -1,0 +1,10 @@
+parameters:
+  - name: environment
+    type: string
+
+stages:
+  - stage: Deploy_${{ parameters.environment }}
+    jobs:
+      - job: Deploy_${{ parameters.environment }}
+        steps:
+          - script: echo $(business_unit)

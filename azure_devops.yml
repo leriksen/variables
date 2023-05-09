@@ -1,0 +1,11 @@
+variables:
+  - group: base
+
+stages:
+  - stage: dev
+    variables:
+      - group: dev
+    jobs:
+      - template: arm.yml
+        parameters:
+          environment: $(environment)
