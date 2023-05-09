@@ -6,7 +6,9 @@ parameters:
 
 stages:
   - stage:
+    displayName: Deploy ${{ parameters.environment }}
     jobs:
       - job:
+        displayName: Deploy ${{ parameters.environment }}
         steps:
           - script: echo ${{ parameters.business_unit }}
