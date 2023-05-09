@@ -5,8 +5,8 @@ parameters:
     type: string
 
 stages:
-  - stage: ${{ parameters.environment }}
+  - stage:
     jobs:
-      - job: Deploy_${{ parameters.environment }}
+      - job:
         steps:
           - script: echo ${{ parameters.business_unit }}
