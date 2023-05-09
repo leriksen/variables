@@ -9,4 +9,4 @@ stages:
     jobs:
       - job: Deploy_${{ parameters.environment }}
         steps:
-          - script: echo ${{ business_unit }}
+          - script: echo ${{ parameters.business_unit }}
