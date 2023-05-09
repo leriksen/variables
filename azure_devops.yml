@@ -8,4 +8,4 @@ stages:
     jobs:
       - template: arm.yml
         parameters:
-          environment: $(environment)
+          environment: $(business_unit)
