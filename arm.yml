@@ -3,6 +3,11 @@ parameters:
     type: string
   - name: business_unit
     type: string
+  - name: list
+    type: object
+    default:
+      - here
+      - there
 
 stages:
   - stage:
@@ -13,3 +18,4 @@ stages:
         steps:
           - script: echo ${{ parameters.business_unit }}
             displayName: show BU
+          - script: echo ${{ join(' ', parameters.list) }}
