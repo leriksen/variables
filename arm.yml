@@ -40,6 +40,12 @@ stages:
           - script: echo ${{ join(' ', parameters.list) }}
             displayName: show list
 
+          - script: echo ${{ join(' ', parameters.globalVars) }}
+            displayName: show globalVars
+
+          - script: echo ${{ join(' ', parameters.localVars) }}
+            displayName: show localVars
+
           - task: Bash@3
             displayName: Show dynamic env
             env: ${{ parameters.env }}
