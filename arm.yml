@@ -52,25 +52,12 @@ stages:
           - bash: echo "${{ format('-->| {0} |<--', join(' ', parameters.localVars)) }}"
             displayName: show format of localVars
 
-          - bash: echo $*
-            inputs:
-              arguments: here there where
-
           - task: Bash@3
             displayName: Show dynamic env
             env: ${{ parameters.env }}
             inputs:
-              targetType: inline
+              targetType: filePath
+              filePath: ./script.sh
               arguments: >-
                 ${{ join(' ', parameters.globalVars) }}
                 ${{ join(' ', parameters.localVars) }}
-              script: |
-                for file in "$@"; do
-                  echo "$file"
-                done
-                echo "$*"
-                echo $(environment)
-                echo $(ENVIRONMENT)
-                echo $(business_unit)
-                echo $(BUSINESS_UNIT)
-                env              
