@@ -19,13 +19,13 @@ stages:
 
     jobs:
       - job:
-        displayName: Deploy $(environment)
+        displayName: Deploy Env
         steps:
           - script: echo $(business_unit)
             displayName: show BU
 
           - script: echo ${{ join(' ', parameters.list) }}
-            displayName: show BU
+            displayName: show list
 
           - task: Bash@3
             displayName: Show dynamic env
@@ -35,4 +35,6 @@ stages:
               script: |
                 echo $(environment)
                 echo $(business_unit)
+                echo $(here)
+                echo $(there)
                 env              
