@@ -43,13 +43,13 @@ stages:
           - script: echo ${{ join(' ', parameters.globalVars) }}
             displayName: show globalVars
 
-          - script: echo ${{ format('--{0}--', join(' ', parameters.globalVars)) }}
+          - script: echo ${{ format('-->| {0} |<--', join(' ', parameters.globalVars)) }}
             displayName: show format of globalVars
 
           - script: echo ${{ join(' ', parameters.localVars) }}
             displayName: show localVars
 
-          - script: echo ${{ format('--{0}--', join(' ', parameters.localVars)) }}
+          - script: echo ${{ format('-->| {0} |<--', join(' ', parameters.localVars)) }}
             displayName: show format of localVars
 
           - task: Bash@3
@@ -57,9 +57,11 @@ stages:
             env: ${{ parameters.env }}
             inputs:
               targetType: inline
-              args: ${{ format('{0} {1}', join(' ', parameters.globalVars), join(' ', parameters.localVars) )}}
+              arguments: ${{ format('{0} {1}', join(' ', parameters.globalVars), join(' ', parameters.localVars) )}}
               script: |
-                echo "$@"
+                for file in "$@"; do
+                  echo "$file"
+                done
                 echo "$*"
                 echo $(environment)
                 echo $(ENVIRONMENT)
