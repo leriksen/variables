@@ -40,16 +40,16 @@ stages:
 #          - script: echo ${{ join(' ', parameters.list) }}
 #            displayName: show list
 #
-          - script: echo ${{ join(' ', parameters.globalVars) }}
+          - script: echo "${{ join(' ', parameters.globalVars) }}"
             displayName: show globalVars
 
-          - script: echo ${{ format('-->| {0} |<--', join(' ', parameters.globalVars)) }}
+          - script: echo "${{ format('-->| {0} |<--', join(' ', parameters.globalVars)) }}"
             displayName: show format of globalVars
 
-          - script: echo ${{ join(' ', parameters.localVars) }}
+          - script: echo "${{ join(' ', parameters.localVars) }}"
             displayName: show localVars
 
-          - script: echo ${{ format('-->| {0} |<--', join(' ', parameters.localVars)) }}
+          - script: "echo ${{ format('-->| {0} |<--', join(' ', parameters.localVars)) }}"
             displayName: show format of localVars
 
           - task: Bash@3
