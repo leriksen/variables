@@ -19,7 +19,7 @@ parameters:
     default:
       - --a=b,c
       - supportThose
-  - name: script:
+  - name: script
     type: object
     default: {}
 
