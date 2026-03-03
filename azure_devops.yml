@@ -1,9 +1,2 @@
-variables:
-  - group: base
-  - group: dev
-
 stages:
   - template: arm.yml
-    parameters:
-      environment: $(environment)
-      business_unit: $(business_unit)
