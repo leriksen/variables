@@ -57,7 +57,9 @@ stages:
             env: ${{ parameters.env }}
             inputs:
               targetType: inline
-              arguments: ${{ format('{0} {1}', join(' ', parameters.globalVars), join(' ', parameters.localVars) )}}
+              arguments: >-
+                ${{ join(' ', parameters.globalVars) }}
+                ${{ join(' ', parameters.localVars) }}
               script: |
                 for file in "$@"; do
                   echo "$file"
