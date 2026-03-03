@@ -8,6 +8,11 @@ parameters:
     default:
       - here
       - there
+  - name: env
+    type: object
+    default:
+      here: there
+      there: here
 
 stages:
   - stage:
@@ -19,3 +24,11 @@ stages:
           - script: echo ${{ parameters.business_unit }}
             displayName: show BU
           - script: echo ${{ join(' ', parameters.list) }}
+          - task: Bash@3
+            displayName: Show dynamic env
+            env: ${{ parameters.env }}
+            inputs:
+              targetType: inline
+              script: |
+                env
+              
