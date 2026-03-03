@@ -33,4 +33,6 @@ stages:
               targetType: inline
               script: |
                 env
+                echo $(environment)
+                echo $(business_unit)
               
