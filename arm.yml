@@ -13,12 +13,12 @@ parameters:
     type: object
     default:
       - --x=y,z
-      - supportThings
+      - --supportThings
   - name: localVars
     type: object
     default:
       - --a=b,c
-      - supportThose
+      - --supportThose
   - name: script
     type: object
     default: {}
@@ -34,17 +34,23 @@ stages:
       - job:
         displayName: Deploy Env
         steps:
-          - script: echo $(business_unit)
-            displayName: show BU
-
-          - script: echo ${{ join(' ', parameters.list) }}
-            displayName: show list
-
+#          - script: echo $(business_unit)
+#            displayName: show BU
+#
+#          - script: echo ${{ join(' ', parameters.list) }}
+#            displayName: show list
+#
           - script: echo ${{ join(' ', parameters.globalVars) }}
             displayName: show globalVars
 
+          - script: echo ${{ format('--{0}--', join(' ', parameters.globalVars)) }}
+            displayName: show format of globalVars
+
           - script: echo ${{ join(' ', parameters.localVars) }}
             displayName: show localVars
+
+          - script: echo ${{ format('--{0}--', join(' ', parameters.localVars)) }}
+            displayName: show format of localVars
 
           - task: Bash@3
             displayName: Show dynamic env
