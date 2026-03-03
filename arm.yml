@@ -34,7 +34,7 @@ stages:
               targetType: inline
               script: |
                 echo $(environment)
+                echo $(ENVIRONMENT)
                 echo $(business_unit)
-                echo $(here)
-                echo $(there)
+                echo $(BUSINESS_UNIT)
                 env              
