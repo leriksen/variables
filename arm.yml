@@ -1,8 +1,10 @@
 parameters:
   - name: environment
     type: string
+    default: sample_environment
   - name: business_unit
     type: string
+    default: business_unit
   - name: list
     type: object
     default:
@@ -21,9 +23,9 @@ stages:
       - job:
         displayName: Deploy ${{ parameters.environment }}
         steps:
-          - script: echo ${{ parameters.business_unit }}
-            displayName: show BU
-          - script: echo ${{ join(' ', parameters.list) }}
+#          - script: echo ${{ parameters.business_unit }}
+#            displayName: show BU
+#          - script: echo ${{ join(' ', parameters.list) }}
           - task: Bash@3
             displayName: Show dynamic env
             env: ${{ parameters.env }}
