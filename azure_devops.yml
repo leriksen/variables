@@ -1,2 +1,10 @@
 stages:
   - template: arm.yml
+    parameters:
+      script:
+        path: to/the/script
+        globalArgs:
+          - here
+          - are
+          - the
+          - parameters
