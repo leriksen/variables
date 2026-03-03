@@ -49,7 +49,7 @@ stages:
           - script: echo "${{ join(' ', parameters.localVars) }}"
             displayName: show localVars
 
-          - script: "echo ${{ format('-->| {0} |<--', join(' ', parameters.localVars)) }}"
+          - script: echo "${{ format('-->| {0} |<--', join(' ', parameters.localVars)) }}"
             displayName: show format of localVars
 
           - task: Bash@3
