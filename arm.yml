@@ -45,7 +45,7 @@ stages:
             env: ${{ parameters.env }}
             inputs:
               targetType: inline
-              args: ${{ format("%s %s", join(' ', parameters.globalVars), join(' ', parameters.localVars) )}}
+              args: ${{ format("{0} {1}", join(' ', parameters.globalVars), join(' ', parameters.localVars) )}}
               script: |
                 echo "$@"
                 echo "$*"
