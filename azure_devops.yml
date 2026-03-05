@@ -1,3 +1,6 @@
+trigger:
+  - main
+
 stages:
   - template: arm.yml
     parameters:
