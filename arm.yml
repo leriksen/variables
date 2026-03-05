@@ -1,24 +1,4 @@
 parameters:
-  - name: list
-    type: object
-    default:
-      - here
-      - there
-  - name: env
-    type: object
-    default:
-      here: there
-      there: here
-  - name: globalVars
-    type: object
-    default:
-      - --x=y,z
-      - --supportThings
-  - name: localVars
-    type: object
-    default:
-      - --a=b,c
-      - --supportThose
   - name: script
     type: object
     default: {}
@@ -34,30 +14,24 @@ stages:
       - job:
         displayName: Deploy Env
         steps:
-#          - script: echo $(business_unit)
-#            displayName: show BU
-#
-#          - script: echo ${{ join(' ', parameters.list) }}
-#            displayName: show list
-#
-          - bash: echo "${{ join(' ', parameters.globalVars) }}"
+          - bash: echo "${{ join(' ', parameters.script.globalVars) }}"
             displayName: show globalVars
 
-          - bash: echo "${{ format('-->| {0} |<--', join(' ', parameters.globalVars)) }}"
+          - bash: echo "${{ format('-->| {0} |<--', join(' ', parameters.script.globalVars)) }}"
             displayName: show format of globalVars
 
-          - bash: echo "${{ join(' ', parameters.localVars) }}"
+          - bash: echo "${{ join(' ', parameters.script.localVars) }}"
             displayName: show localVars
 
-          - bash: echo "${{ format('-->| {0} |<--', join(' ', parameters.localVars)) }}"
+          - bash: echo "${{ format('-->| {0} |<--', join(' ', parameters.script.localVars)) }}"
             displayName: show format of localVars
 
           - task: Bash@3
             displayName: Show dynamic env
-            env: ${{ parameters.env }}
+            env: ${{ parameters.script.globalEnv }}
             inputs:
               targetType: filePath
-              filePath: ./script.sh
+              filePath: ${{ parameters.script.path }}
               arguments: >-
-                ${{ join(' ', parameters.globalVars) }}
-                ${{ join(' ', parameters.localVars) }}
+                ${{ join(' ', parameters.script.globalVars) }}
+                ${{ join(' ', parameters.script.localVars) }}

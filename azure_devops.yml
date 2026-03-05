@@ -3,8 +3,12 @@ stages:
     parameters:
       script:
         path: to/the/script
-        globalArgs:
-          - here
-          - are
-          - the
-          - parameters
+        globalVars:
+          - --x=y,z
+          - --supportThings
+        globalEnv:
+          here=there
+          there=here
+        localVars:
+          - --a=b,c
+          - --supportThose
