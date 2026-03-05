@@ -2,6 +2,9 @@ parameters:
   - name: script
     type: object
     default: {}
+  - name: download
+    type: object
+    default: {}
 
 stages:
   - stage:
@@ -35,3 +38,9 @@ stages:
               arguments: >-
                 ${{ join(' ', parameters.script.globalVars) }}
                 ${{ join(' ', parameters.script.localVars) }}
+
+          - task: Bash@3
+            displayName: handle empty arg
+            targetType: inline
+            script: |
+              echo "${{ parameters.download.artifact }}-${{ parameters.download.version }}.zip"

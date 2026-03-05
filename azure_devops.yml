@@ -12,3 +12,6 @@ stages:
         localVars:
           - --a=b,c
           - --supportThose
+      download:
+        artifact: binary
+        version: 8.0.2
