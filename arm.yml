@@ -41,6 +41,7 @@ stages:
 
           - task: Bash@3
             displayName: handle empty arg
-            targetType: inline
-            script: |
-              echo "${{ parameters.download.artifact }}-${{ parameters.download.version }}.zip"
+            inputs:
+              targetType: inline
+              script: |
+                echo "${{ parameters.download.artifact }}-${{ parameters.download.version }}.zip"
